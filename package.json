@@ -20,6 +20,7 @@
     "start": "node build/checkStock.js"
   },
   "devDependencies": {
+    "@types/node": "^24.0.1",
     "@types/puppeteer": "^5.4.7",
     "typescript": "^5.8.3"
   },
