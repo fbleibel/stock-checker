@@ -1,0 +1,36 @@
+import puppeteer from 'puppeteer';
+
+const URL = 'https://vuoriclothing.com/products/elevate-kore-pant-navy?queryId=2ab988ffe35ae3c6fa60749509608a85';
+const SIZE = 'Large';
+
+type SizeButton = {
+  text: string;
+  disabled: boolean;
+};
+
+async function checkStock(): Promise<void> {
+  console.log("Launching pupeteer...");
+  const browser = await puppeteer.launch({
+    // headless: false,   // 🔥 Shows the browser window
+    // slowMo: 50,        // 🐢 Optional: slows down each action for easier debugging
+    // defaultViewport: null // 🖥 Optional: uses your full screen size
+  });
+  const page = await browser.newPage();
+
+  try {
+    await page.goto(URL, { waitUntil: 'networkidle2' });
+    console.log("Page loaded");
+
+    const button = await page.waitForSelector(`button[aria-label="${SIZE}"]`);
+    const isDisabled = await button!.evaluate(el => el.getAttribute('aria-disabled'));
+    console.log(`aria-disabled: ${isDisabled}`);
+
+
+  } catch (err) {
+    console.error('Error checking stock:', err);
+  } finally {
+    await browser.close();
+  }
+}
+
+checkStock();
