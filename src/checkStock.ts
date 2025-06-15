@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-const URL = process.env["URL"]!;
+const URL = process.env.URL!;
 const SIZE = 'Large';
 
 type SizeButton = {
