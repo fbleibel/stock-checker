@@ -18,6 +18,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: 'echo "AVAILABLE=$(npm start)" >> "$GITHUB_OUTPUT"'
+        id: "run-start"
         env:
           URL:  ${{ vars.PAGE }}
   send-email:
