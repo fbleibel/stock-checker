@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-const URL = 'https://vuoriclothing.com/products/elevate-kore-pant-navy?queryId=2ab988ffe35ae3c6fa60749509608a85';
+const URL = process.env["PAGE"];
 const SIZE = 'Large';
 
 type SizeButton = {
