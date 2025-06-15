@@ -1,0 +1,19 @@
+name: Scheduled Stock Check
+
+on:
+  schedule:
+    - cron: '0 * * * *'       # every hour UTC
+  workflow_dispatch:         # allows manual runs
+
+jobs:
+  run-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - run: npm ci
+      - run: npm run build
+      - run: npm start
