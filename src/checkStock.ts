@@ -14,6 +14,8 @@ async function checkStock(): Promise<void> {
     // headless: false,   // 🔥 Shows the browser window
     // slowMo: 50,        // 🐢 Optional: slows down each action for easier debugging
     // defaultViewport: null // 🖥 Optional: uses your full screen size
+    args: ['--no-sandbox', '--disable-setuid-sandbox'], // For GitHub Actions
+
   });
   const page = await browser.newPage();
 
