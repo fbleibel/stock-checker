@@ -28,8 +28,6 @@ async function checkStock(): Promise<void> {
     console.log(`aria-disabled: ${isDisabled}`);
 
 
-  } catch (err) {
-    console.error('Error checking stock:', err);
   } finally {
     await browser.close();
   }
